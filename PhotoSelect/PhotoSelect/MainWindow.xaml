@@ -1,0 +1,130 @@
+﻿<Window x:Class="PhotoSelect.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoSelect"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <HierarchicalDataTemplate 
+		    DataType    = "{x:Type local:AFolder}"
+            ItemsSource = "{Binding Path=SubFolders}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="126*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="142*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="182*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="257*"/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter x:Name="gridSplitterVertical" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,0,2" Width="5" Grid.RowSpan="3" Grid.ColumnSpan="1"/>
+        <GridSplitter x:Name="gridSplitterHorizontal" HorizontalAlignment="Stretch" Height="5" Margin="0" Grid.Row="1"/>
+        <DockPanel Grid.Column="2" Margin="0" Grid.RowSpan="3">
+            <Grid DockPanel.Dock="Top" Height="20" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="buttonTreeLeft" Content="←" Grid.Column="0" Click="buttonTreeLeft_Click"/>
+                <Button x:Name="buttonTreeRight" Content="→" Grid.Column="1" Click="buttonTreeRight_Click"/>
+                <Button x:Name="buttonTreeUp" Content="↑" Grid.Column="2" Click="buttonTreeUp_Click"/>
+                <Button x:Name="buttonTreeDown" Content="↓" Grid.Column="3" Click="buttonTreeDown_Click"/>
+                <Button x:Name="buttonAddFolderRoot" Content="フォルダ追加(ルート)" Grid.Column="4" Click="buttonAddFolderRoot_Click" />
+                <Button x:Name="buttonAddFolderUnder" Content="フォルダ追加(下)" Grid.Column="5" Click="buttonAddFolderUnder_Click" />
+                <Button x:Name="buttonTreeDelete" Content="ツリー要素削除" Grid.Column="6" Click="buttonTreeDelete_Click" />
+                <Button x:Name="buttonTreeRename" Content="ツリー名前変更" Grid.Column="7" Click="buttonTreeRename_Click" />
+                <Button x:Name="buttonPrevSplit" Content="&lt;" Grid.Column="8" Click="buttonPrevSplit_Click"/>
+                <CheckBox x:Name="checkBoxSplitPoint" Content="分割位置" Grid.Column="9" Checked="checkBoxSplitPoint_Checked" Unchecked="checkBoxSplitPoint_Unchecked"/>
+                <Button x:Name="buttonSplit" Content="分割実行" Grid.Column="10" Click="buttonSplit_Click"/>
+                <Button x:Name="buttonNextSplit" Content="&gt;" Grid.Column="11" Click="buttonNextSplit_Click"/>
+                <Button x:Name="buttonAddList" Content="リストを追加" Grid.Column="12" Click="buttonAddList_Click"/>
+                <Button x:Name="buttonSaveList" Content="リストを保存" Click="buttonSaveList_Click" Grid.Column="13"/>
+            </Grid>
+            <Grid DockPanel.Dock="Top" Height="20" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="checkBoxSelected" Content="選択" Height="20" VerticalAlignment="Top" DockPanel.Dock="Top" Checked="checkBoxSelected_Checked" Unchecked="checkBoxSelected_Unchecked" HorizontalAlignment="Left"/>
+                <Button x:Name="buttonSelectAll" Content="すべて選択" Click="buttonSelectAll_Click" Grid.Column="1"/>
+                <Button x:Name="buttonClearSelectAll" Content="すべて選択解除" Click="buttonClearSelectAll_Click" Grid.Column="2"/>
+                <Button x:Name="buttonOpenFolder" Content="フォルダを開く" Click="buttonOpenFolder_Click" Grid.Column="3"/>
+                <Button x:Name="buttonOpenAlbum" Content="アルバムを開く" Grid.Column="4" Click="buttonOpenAlbum_Click"/>
+                <Button x:Name="buttonAddAlbum" Content="アルバムを追加" Grid.Column="5" Click="buttonAddAlbum_Click" />
+                <Button x:Name="buttonCopyToFolder" Content="フォルダにコピー" Grid.Column="6" Click="buttonCopyToFolder_Click"/>
+                <Button x:Name="buttonStopLoading" Content="ロード中止" Grid.Column="7" Click="buttonStopLoading_Click" />
+                <Button x:Name="buttonSettings" Content="設定" Grid.Column="8" Click="buttonSettings_Click"/>
+                <Button x:Name="buttonExit" Content="終了" Grid.Column="9" Click="buttonExit_Click"/>
+            </Grid>
+            <Button x:Name="buttonPrevSelected" Content="&lt;&lt;" Width="20" Click="buttonPrevSelected_Click"/>
+            <Grid Width="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="buttonPrevSelect" Content="&lt;o" Width="20" Click="buttonPrevSelect_Click" />
+                <Button x:Name="buttonPrev" Content="&lt;" Width="20" Click="buttonPrev_Click" Grid.Row="1"/>
+                <Button x:Name="buttonPrevUnselect" Content="&lt;x" Width="20" Grid.Row="2" Click="buttonPrevUnselect_Click"/>
+            </Grid>
+            <Button x:Name="buttonNextSelected" Content="&gt;&gt;" Width="20" DockPanel.Dock="Right" Click="buttonNextSelected_Click"/>
+            <Grid Width="20" DockPanel.Dock="Right">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="buttonNextSelect" Content="o&gt;" Width="20" Click="buttonNextSelect_Click" />
+                <Button x:Name="buttonNext" Content="&gt;" Width="20" DockPanel.Dock="Right" Click="buttonNext_Click" Grid.Row="1"/>
+                <Button x:Name="buttonNextUnselect" Content="x&gt;" Width="20" Grid.Row="2" Click="buttonNextUnselect_Click"/>
+            </Grid>
+            <Image x:Name="image"/>
+        </DockPanel>
+        <TreeView x:Name="treeView" Margin="0" SelectedItemChanged="treeView_SelectedItemChanged">
+            <TreeViewItem ItemsSource="{Binding Path=SubFolders}" Header="Folders"  />
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsSelected" Value="{Binding Path=IsSelected}"/>
+                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}"/>
+                </Style>
+            </TreeView.Resources>
+        </TreeView>
+        <ListView x:Name="listView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0" Grid.Row="2" SelectionChanged="listView_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
+    </Grid>
+</Window>
