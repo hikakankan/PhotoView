@@ -1,0 +1,13 @@
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\PhotoView.exe.config
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\PhotoView.exe
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\PhotoView.pdb
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.csprojResolveAssemblyReference.cache
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.FormPhotoView.resources
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.Properties.Resources.resources
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.csproj.GenerateResource.Cache
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.exe
+C:\furuta\repository\PhotoView\PhotoView\PhotoView\obj\Debug\PhotoView.pdb
